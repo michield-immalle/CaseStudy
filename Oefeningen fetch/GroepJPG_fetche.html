@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />  
+  </head>
+  <body>
+    <h1>Fetch JPG</h1>
+
+    <script>
+      console.log('fetching JPG');
+      const filenames = [
+        'Foto.jpg',
+        'Foto2.jpg',
+        'Foto3.jpg'
+      ];
+      catchJPG(filenames)
+        .then(response => {
+          console.log('Here are the Images');
+        })
+        .catch(error => {
+          console.log('error!');
+          console.error(error);
+        });
+      async function catchJPG(filenames) {
+        for (let filename of filenames) {
+          const response = await fetch(filename);
+          const blob = await response.blob();
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(blob);
+          img.width = '400';
+          document.body.append(img);
+        }
+      }
+    </script>
+  </body>
+</html>

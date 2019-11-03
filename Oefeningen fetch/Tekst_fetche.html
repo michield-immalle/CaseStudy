@@ -11,8 +11,8 @@
     <p id="Tekst"/>
     <script>
       console.log('fetching a Tekst');
-      catchPoem()
-        .then(poem => {
+      catchTekst()
+        .then(tekst => {
           document.getElementById('Tekst').innerText = poem;
           
         })
@@ -20,7 +20,7 @@
           console.log('error!');
           console.error(error);
         });
-      async function catchPoem() {
+      async function catchTekst() {
         const response = await fetch('Tekst.txt');
         return await response.text();
       }
